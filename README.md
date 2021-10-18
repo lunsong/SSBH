@@ -6,7 +6,9 @@ $$
 $$
 The punctured version is
 $$
-\psi=1+{\mathcal{M}\over r}+u\\
+\psi=1+{\mathcal{M}\over r}+u
+$$
+$$
 \Delta u+{9J^2r\sin^2\theta\over4[(u+1)r+\mathcal{M}]^7}=0
 $$
 Solve it by
