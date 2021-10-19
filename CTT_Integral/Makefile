@@ -1,4 +1,5 @@
 all: U.data test
+	./test
 
 U.data: A.data get_U
 	if [ ! -f U.data ]; then touch U.data; fi

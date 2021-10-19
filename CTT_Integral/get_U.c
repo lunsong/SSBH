@@ -14,7 +14,7 @@ int main(){
     close(fd);
     for(int i=0; i<N; i++) u[i] = 0;
     for(int step=0; step<N_step; step++){
-	printf("step %d/%d\n", step, N_step);
+    	double max_change = 0;
 	for(int ir=0; ir<N_r; ir++)
 	for(int itheta=0; itheta<N_theta; itheta++){
 	    double foo = (u[idx(ir,itheta)]+1)*(ir+.5)*dr+M;
@@ -22,10 +22,17 @@ int main(){
 	    v[idx(ir,itheta)] = 1/(bar*bar*foo);
 	}
 	for(int i=0; i<N; i++){
-	    u[i] = 0;
+	    double new = 0;
 	    for(int j=0; j<N; j++)
-		u[i] += A[i*N+j]*v[j];
+		new += A[i*N+j]*v[j];
+	    double change = fabs(u[i] - new);
+	    if(change>max_change)
+		max_change = change;
+	    u[i] = new;
 	}
+	if(max_change<tol)
+	    break;
+	printf("step %d/%d: max_change %lf\n", step, N_step, max_change);
     }
     fd = open("U.data", O_WRONLY);
     if(write(fd, u, sizeof(double)*N)==-1){

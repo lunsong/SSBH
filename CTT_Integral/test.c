@@ -21,8 +21,10 @@ int main(){
 	s *= s;
 	double foo = (u[idx(ir,itheta)]+1)*r+M;
 	double bar = foo*foo*foo;
-	err =  2.25*J2*r*s / (bar*bar*foo);
-	printf("%lf,%lf\n", err,u[idx(ir,itheta)]);
+	foo =  2.25*J2*r*s / (bar*bar*foo);
+	printf("r=%lf,theta=%lf,u=%lf,D2u=%lf,F=%lf,err=%lf\n",
+			r,theta,u[idx(ir,itheta)],err,foo,err+foo);
+	err += foo;
 	err = fabs(err);
 	if(err > max_err){
 	    max_err = err;
