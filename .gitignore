@@ -1,10 +1,12 @@
 # Produced Data
 *.data
+*.dat
 
 # Excecutables
 get_A
 get_U
 test
+a.out
 
 # Generated files
 f_coef.h
