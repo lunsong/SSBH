@@ -14,7 +14,7 @@ ctt.argtypes = [ndpointer(np.float64),
                 c_double,
                 c_bool]
 class CTT:
-    def __init__(self, x_span=10, Nx=20, M=1., J=1.):
+    def __init__(self, x_span, Nx, M, J):
         self.Nx = Nx
         self.dx = x_span / Nx
         self.M  = M
@@ -22,9 +22,7 @@ class CTT:
         self.u  = np.zeros(shape=(2,Nx,Nx,Nx))
         self.tol = None
         self.step = 0
-    def solve(self, step=100, tol=1e-6, verbose=False,alpha=None):
-        if self.tol!=None and self.tol<tol:
-            return
+    def solve(self, step=100, tol=1e-6, verbose=True, alpha=None):
         if alpha==None:
             alpha=(np.sqrt(3)+1)/2
         if step%2==1:
@@ -38,5 +36,5 @@ class CTT:
         self.step += step_run
 
 if __name__ == '__main__':
-    sim = CTT()
-    sim.solve(verbose=True)
+    sim = CTT(x_span=10, Nx=20, M=1., J=1.)
+    sim.solve()
