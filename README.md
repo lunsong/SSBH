@@ -29,3 +29,9 @@ where
 $$
 f(x)=\int\limits_0^{2\pi}{\mathrm{d}\psi\over\sqrt{1-x\cos\psi}}
 $$
+
+# TODOs
+- [ ] recover $\gamma_{ij}$ and $K_{ij}$. 
+- [ ] calculate the ADM mass
+- [ ] implement parallelization
+- [ ] evolve use ADM/BSSN/z4c scheme
